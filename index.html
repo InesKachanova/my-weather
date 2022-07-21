@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+
+    <link href="src/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="conteiner">
+      <div class="card">
+        <div class="card-body">
+          <form class="row" id="search-form">
+            <div class="col-8">
+              <input
+                type="text"
+                class="form-control"
+                id="input-text"
+                placeholder="Enter your city"
+              />
+            </div>
+            <div class="col-2">
+              <button
+                type="submit"
+                class="btn btn-secondary"
+                id="search-button"
+              >
+                Search
+              </button>
+            </div>
+            <div class="col-2">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="currentButton"
+              >
+                Current
+              </button>
+            </div>
+          </form>
+          <div class="card-small">
+            <div class="cardtext-left">
+              <h1></h1>
+              <p id="day-date">Today Sun 8/21</p>
+
+              <h2>
+                <span id="correntTemperature"></span
+                ><span class="pointer" id="temperatureCelsius">°C</span>
+                <!-- <span class="pointer" id="temperatureFahrenheit">s°F</span> -->
+              </h2>
+              <p><span id="minCityTemp"></span>°C</p>
+              <img
+                src="icons/day_partial_cloud.png"
+                class="cardimg"
+                alt="..."
+              />
+            </div>
+            <div class="vl"></div>
+            <div class="cardtext-right">
+              <p>Humidity: <span id="humidity"></span>%</p>
+              <p><span>Wind: </span><span id="windSpeed"></span>km/h</p>
+              <p>Clouds: <span id="clouds"></span>%</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="minicard">
+                <div class="minicard-body">
+                  <h5 class="minicard-title">Mon</h5>
+                  <img src="icons/cloudy.png" class="card-img-top" alt="..." />
+                  <div class="minicard-text">
+                    <span class="maxtemp"> 21°C </span>
+                    <span class="mintemp"> 17°C </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="minicard">
+                <div class="minicard-body">
+                  <h5 class="minicard-title">Tue</h5>
+                  <img
+                    src="icons/day_rain.png"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="minicard-text">
+                    <span class="maxtemp"> 21°C </span>
+                    <span class="mintemp"> 17°C </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="minicard">
+                <div class="minicard-body">
+                  <h5 class="minicard-title">Wed</h5>
+                  <img
+                    src="icons/day_clear.png"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="minicard-text">
+                    <span class="maxtemp"> 21°C </span>
+                    <span class="mintemp"> 17°C </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="minicard">
+                <div class="minicard-body">
+                  <h5 class="minicard-title">Thu</h5>
+                  <img
+                    src="icons/day_rain.png"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="minicard-text">
+                    <span class="maxtemp"> 21°C </span>
+                    <span class="mintemp"> 17°C </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="minicard">
+                <div class="minicard-body">
+                  <h5 class="minicard-title">Fri</h5>
+                  <img
+                    src="icons/day_partial_cloud.png"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="minicard-text">
+                    <span class="maxtemp"> 21°C </span>
+                    <span class="mintemp"> 17°C </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hl"></div>
+          <footer><a href="">Open-source code</a>, by Inessa Kachanova</footer>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>

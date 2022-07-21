@@ -1,0 +1,62 @@
+body {
+  background-image: url(../images/city.jpg);
+  background-position: center 25%;
+}
+
+h1 {
+  width: 60%;
+}
+
+.card {
+  width: 36rem;
+  margin: 110px auto;
+  box-shadow: 5px 5px 15px #4d4a52;
+  border: 1px solid gray;
+  position: relative;
+}
+.card-small {
+  padding: 10px;
+  margin: 10px 0;
+}
+.vl {
+  border-left: 3px solid gray;
+  height: 130px;
+  position: absolute;
+  left: 60%;
+  margin-left: -3px;
+  top: 23%;
+}
+.cardtext-right {
+  position: absolute;
+  left: 65%;
+  top: 25%;
+  line-height: 1;
+}
+.cardimg {
+  width: 20%;
+  position: absolute;
+  left: 33%;
+  top: 35%;
+  padding: 10px;
+}
+.col {
+  display: block;
+  text-align: center;
+}
+.card-img-top {
+  width: 65%;
+  padding: 5px;
+}
+.maxtemp {
+  font-weight: bold;
+}
+.mintemp {
+  font-size: smaller;
+}
+.hl {
+  border-top: 1px solid rgb(192, 190, 190);
+  margin: 20px 0 10px 0;
+}
+.pointer {
+  cursor: pointer;
+}
