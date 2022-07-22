@@ -1,5 +1,6 @@
-function currettDate(newdate) {
-  let now = new Date();
+function showDate(response) {
+  let localDate = response.data.dt * 1000;
+  let now = new Date(localDate);
 
   let weekDays = [
     "Sunday",
@@ -41,6 +42,8 @@ function getWether(cityName) {
 }
 
 function showWeather(response) {
+  console.log(response);
+  showDate(response);
   showTemp(response);
   showWind(response);
   showClouds(response);
@@ -120,8 +123,6 @@ function temperatureCelsius() {
   let tempFahrenheit = document.querySelector("#temperatureFahrenheit");
   tempFahrenheit.addEventListener("click", temperatureFahrenheit);
 }
-
-currettDate(new Date());
 
 // let tempFahrenheit = document.querySelector("#temperatureFahrenheit");
 // tempFahrenheit.addEventListener("click", temperatureFahrenheit);
