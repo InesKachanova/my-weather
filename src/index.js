@@ -48,8 +48,18 @@ function showWeather(response) {
   showWind(response);
   showClouds(response);
   showHumidity(response);
-  showMinCityTemp(response);
+  showDescription(response);
   showCity(response);
+  showIcon(response);
+}
+
+function showIcon(response) {
+  let currentIcon = document.querySelector("#icon");
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  currentIcon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function showTemp(response) {
@@ -76,10 +86,10 @@ function showClouds(response) {
   currentClouds.innerHTML = `${clouds}`;
 }
 
-function showMinCityTemp(response) {
-  let minCityTemp = Math.round(response.data.main.temp_min);
-  let currentMinCityTemp = document.querySelector("#minCityTemp");
-  currentMinCityTemp.innerHTML = `${minCityTemp}`;
+function showDescription(response) {
+  let description = response.data.weather[0].description;
+  let currentDescription = document.querySelector("#description");
+  currentDescription.innerHTML = `${description}`;
 }
 
 function getCurrentWether(position) {
