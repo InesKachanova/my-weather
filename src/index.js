@@ -42,7 +42,6 @@ function getWether(cityName) {
 }
 
 function showWeather(response) {
-  console.log(response);
   showDate(response);
   showTemp(response);
   showWind(response);
@@ -63,9 +62,8 @@ function showIcon(response) {
 }
 
 function showTemp(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let currentTemperature = document.querySelector("#correntTemperature");
-  currentTemperature.innerHTML = `${temperature}`;
+  celsiusTemperature = Math.round(response.data.main.temp);
+  temperatureCelsius();
 }
 
 function showWind(response) {
@@ -111,34 +109,34 @@ function showCity(response) {
 }
 
 function temperatureFahrenheit() {
-  let correntTemperature = document.querySelector("#correntTemperature");
-  let newtemp = document.querySelector("#correntTemperature");
-  newtemp.innerHTML = Math.round(correntTemperature.innerHTML * 1.8 + 32);
+  correntTemperature.innerHTML = Math.round(celsiusTemperature * 1.8 + 32);
 
-  let element = document.querySelector("#temperatureFahrenheit");
-  element.removeEventListener("click", temperatureFahrenheit);
+  let tempFahrenheit = document.querySelector("#temperatureFahrenheit");
+  tempFahrenheit.removeEventListener("click", temperatureFahrenheit);
+  tempFahrenheit.classList.add("active");
 
   let tempCelsius = document.querySelector("#temperatureCelsius");
   tempCelsius.addEventListener("click", temperatureCelsius);
+  tempCelsius.classList.remove("active");
 }
 
 function temperatureCelsius() {
   let correntTemperature = document.querySelector("#correntTemperature");
-  let newtemp = document.querySelector("#correntTemperature");
-  newtemp.innerHTML = Math.round((correntTemperature.innerHTML - 32) / 1.8);
+  correntTemperature.innerHTML = celsiusTemperature;
 
-  let element = document.querySelector("#temperatureCelsius");
-  element.removeEventListener("click", temperatureCelsius);
+  let tempCelsius = document.querySelector("#temperatureCelsius");
+  tempCelsius.removeEventListener("click", temperatureCelsius);
+  tempCelsius.classList.add("active");
 
   let tempFahrenheit = document.querySelector("#temperatureFahrenheit");
   tempFahrenheit.addEventListener("click", temperatureFahrenheit);
+  tempFahrenheit.classList.remove("active");
 }
 
-// let tempFahrenheit = document.querySelector("#temperatureFahrenheit");
-// tempFahrenheit.addEventListener("click", temperatureFahrenheit);
+let celsiusTemperature = null;
 
-// let tempCelsius = document.querySelector("#temperatureCelsius");
-// tempCelsius.addEventListener("click", temperatureCelsius);
+let tempFahrenheit = document.querySelector("#temperatureFahrenheit");
+tempFahrenheit.addEventListener("click", temperatureFahrenheit);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchCity);
