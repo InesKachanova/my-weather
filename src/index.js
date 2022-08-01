@@ -50,6 +50,7 @@ function showWeather(response) {
   showDescription(response);
   showCity(response);
   showIcon(response);
+  showForecast();
 }
 
 function showIcon(response) {
@@ -108,6 +109,33 @@ function showCity(response) {
   currentCity.innerHTML = response.data.name;
 }
 
+function showForecast() {
+  let forecast = document.querySelector("#weatherForecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+            <div class="col-2">
+              <div class="minicard">
+                <div class="minicard-body">
+                  <h5 class="minicard-title">${day}</h5>
+                  <img src="icons/cloudy.png" class="card-img-top" alt="..." />
+                  <div class="minicard-text">
+                    <span class="maxtemp"> 21°C </span>
+                    <span class="mintemp"> 17°C </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
+
 function temperatureFahrenheit() {
   correntTemperature.innerHTML = Math.round(celsiusTemperature * 1.8 + 32);
 
@@ -145,3 +173,7 @@ let button = document.querySelector("#currentButton");
 button.addEventListener("click", getCurrentPosition);
 
 getWether("Chicago");
+// "Wednesday",
+// "Thursday",
+// "Friday",
+// "Saturday",
