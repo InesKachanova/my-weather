@@ -50,7 +50,7 @@ function showWeather(response) {
   showDescription(response);
   showCity(response);
   showIcon(response);
-  showForecast();
+  getForecast(response.data.coord);
 }
 
 function showIcon(response) {
@@ -109,31 +109,58 @@ function showCity(response) {
   currentCity.innerHTML = response.data.name;
 }
 
-function showForecast() {
+function formatDay(timestemp) {
+  let date = new Date(timestemp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function showForecast(response) {
+  let weatherForecast = response.data.daily;
+  console.log(response.data.daily);
+
   let forecast = document.querySelector("#weatherForecast");
+
   let forecastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tue"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-            <div class="col-2">
+
+  weatherForecast.forEach(function (weatherForecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+                 <div class="col-2">
               <div class="minicard">
                 <div class="minicard-body">
-                  <h5 class="minicard-title">${day}</h5>
-                  <img src="icons/cloudy.png" class="card-img-top" alt="..." />
+                  <h5 class="minicard-title">${formatDay(
+                    weatherForecastDay.dt
+                  )}</h5>
+                  <img src="http://openweathermap.org/img/wn/${
+                    weatherForecastDay.weather[0].icon
+                  }@2x.png" class="card-img-top" alt="..." />
                   <div class="minicard-text">
-                    <span class="maxtemp"> 21°C </span>
-                    <span class="mintemp"> 17°C </span>
+                    <span class="maxtemp"> ${Math.round(
+                      weatherForecastDay.temp.max
+                    )}° </span>
+                    <span class="mintemp"> ${Math.round(
+                      weatherForecastDay.temp.min
+                    )}° </span>
                   </div>
                 </div>
               </div>
             </div>
           `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "8881769c949a322daeafcf35c09b1eb2";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
 }
 
 function temperatureFahrenheit() {
@@ -173,7 +200,3 @@ let button = document.querySelector("#currentButton");
 button.addEventListener("click", getCurrentPosition);
 
 getWether("Chicago");
-// "Wednesday",
-// "Thursday",
-// "Friday",
-// "Saturday",
