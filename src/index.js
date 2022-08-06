@@ -63,8 +63,8 @@ function showIcon(response) {
 }
 
 function showTemp(response) {
-  celsiusTemperature = Math.round(response.data.main.temp);
-  temperatureCelsius();
+  let correntTemperature = document.querySelector("#correntTemperature");
+  correntTemperature.innerHTML = Math.round(response.data.main.temp);
 }
 
 function showWind(response) {
@@ -118,7 +118,6 @@ function formatDay(timestemp) {
 
 function showForecast(response) {
   let weatherForecast = response.data.daily;
-  console.log(response.data.daily);
 
   let forecast = document.querySelector("#weatherForecast");
 
@@ -129,7 +128,7 @@ function showForecast(response) {
       forecastHTML =
         forecastHTML +
         `
-                 <div class="col-2">
+            <div class="col-2">
               <div class="minicard">
                 <div class="minicard-body">
                   <h5 class="minicard-title">${formatDay(
@@ -162,37 +161,6 @@ function getForecast(coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showForecast);
 }
-
-function temperatureFahrenheit() {
-  correntTemperature.innerHTML = Math.round(celsiusTemperature * 1.8 + 32);
-
-  let tempFahrenheit = document.querySelector("#temperatureFahrenheit");
-  tempFahrenheit.removeEventListener("click", temperatureFahrenheit);
-  tempFahrenheit.classList.add("active");
-
-  let tempCelsius = document.querySelector("#temperatureCelsius");
-  tempCelsius.addEventListener("click", temperatureCelsius);
-  tempCelsius.classList.remove("active");
-}
-
-function temperatureCelsius() {
-  let correntTemperature = document.querySelector("#correntTemperature");
-  correntTemperature.innerHTML = celsiusTemperature;
-
-  let tempCelsius = document.querySelector("#temperatureCelsius");
-  tempCelsius.removeEventListener("click", temperatureCelsius);
-  tempCelsius.classList.add("active");
-
-  let tempFahrenheit = document.querySelector("#temperatureFahrenheit");
-  tempFahrenheit.addEventListener("click", temperatureFahrenheit);
-  tempFahrenheit.classList.remove("active");
-}
-
-let celsiusTemperature = null;
-
-let tempFahrenheit = document.querySelector("#temperatureFahrenheit");
-tempFahrenheit.addEventListener("click", temperatureFahrenheit);
-
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchCity);
 

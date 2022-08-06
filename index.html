@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather app</title>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -57,16 +57,10 @@
 
               <h2 class="temperature">
                 <span id="correntTemperature"></span
-                ><span class="pointer active" id="temperatureCelsius">°C</span
-                ><span class="pointer" id="temperatureFahrenheit">°F</span>
+                ><span class="celsius" id="temperatureCelsius">°C</span>
               </h2>
 
-              <img
-                src="icons/day_partial_cloud.png"
-                class="cardimg"
-                id="icon"
-                alt="..."
-              />
+              <img src="" class="cardimg" id="icon" alt="..." />
             </div>
             <div class="vl"></div>
             <div class="cardtext-right">
@@ -75,6 +69,7 @@
               <p>Clouds: <span id="clouds"></span>%</p>
             </div>
           </div>
+
           <div id="weatherForecast"></div>
 
           <div class="hl"></div>
